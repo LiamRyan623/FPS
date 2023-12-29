@@ -3,11 +3,45 @@
 
 #include "MonsterShooterCharacter.h"
 
+#include "Camera/CameraComponent.h" 
+#include "Components/CapsuleComponent.h"
+#include "Components/InputComponent.h"
+
 // Sets default values
 AMonsterShooterCharacter::AMonsterShooterCharacter()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
+
+	GetCapsuleComponent()->InitCapsuleSize(40.0f, 95.0f);
+	
+	TurnRate = 45.0f;
+	LookUpRate = 45.0f;
+
+	FirstPersonCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("First Person Camera"));
+	FirstPersonCamera->SetupAttachment(GetCapsuleComponent());
+	FirstPersonCamera->AddRelativeLocation(FVector(-39.6f, 1.75f, 64.0f));
+	FirstPersonCamera->bUsePawnControlRotation = true;
+
+	HandsMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("CharacterMesh"));
+
+	HandsMesh->SetOnlyOwnerSee(true);
+	HandsMesh->SetupAttachment(FirstPersonCamera);
+	HandsMesh->bCastDynamicShadow = false;
+	HandsMesh->CastShadow = false;
+	HandsMesh->AddRelativeRotation(FRotator(1.9f, -19.19f, 5.2f));
+	HandsMesh->AddRelativeLocation(FVector(-0.5f, 4.4f, -155.7f));
+
+	GunMesh = CreateDefaultSubobject<USkeletalMeshComponent>(TEXT("Gun"));
+	GunMesh->SetOnlyOwnerSee(true);
+	GunMesh->bCastDynamicShadow = false;
+	GunMesh->CastShadow = false;
+	
+	MuzzleLocation = CreateDefaultSubobject<USceneComponent>(TEXT("Muzzle Location"));
+	MuzzleLocation->SetupAttachment(GunMesh);
+	MuzzleLocation->SetRelativeLocation(FVector(0.2f, 48.4f, -10.6f));
+
+	GunOffSet = FVector(00.0f, 0.0f, 10.0f);
 
 }
 
@@ -30,6 +64,26 @@ void AMonsterShooterCharacter::SetupPlayerInputComponent(UInputComponent* Player
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+}
+
+void AMonsterShooterCharacter::MoveForward(float Value)
+{
+}
+
+void AMonsterShooterCharacter::MoveRight(float Value)
+{
+}
+
+void AMonsterShooterCharacter::TurnAtRate(float Rate)
+{
+}
+
+void AMonsterShooterCharacter::LookAtRate(float Rate)
+{
+}
+
+void AMonsterShooterCharacter::()
+{
 }
 
  

@@ -33,6 +33,9 @@ public:
 
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
 		class USkeletalMeshComponent* GunMesh;
+
+	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
+		class USceneComponent* MuzzleLocation;
 	
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly Category = Camera)
 		class UCameraComponent* FirstPersonCamera;
