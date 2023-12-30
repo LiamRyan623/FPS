@@ -41,7 +41,7 @@ AMonsterShooterCharacter::AMonsterShooterCharacter()
 	MuzzleLocation->SetupAttachment(GunMesh);
 	MuzzleLocation->SetRelativeLocation(FVector(0.2f, 48.4f, -10.6f));
 
-	GunOffSet = FVector(00.0f, 0.0f, 10.0f);
+	GunOffset = FVector(100.0f, 0.0f, 10.0f);
 
 }
 
@@ -49,6 +49,10 @@ AMonsterShooterCharacter::AMonsterShooterCharacter()
 void AMonsterShooterCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	GunMesh->AttachToComponent(HandsMesh,
+		FAttachmentTransformRules::SnapToTargetNotIncludingScale,
+		TEXT("GripPoint"));
 	
 }
 
@@ -82,8 +86,5 @@ void AMonsterShooterCharacter::LookAtRate(float Rate)
 {
 }
 
-void AMonsterShooterCharacter::()
-{
-}
 
  

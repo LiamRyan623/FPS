@@ -35,15 +35,15 @@ public:
 		class USkeletalMeshComponent* GunMesh;
 
 	UPROPERTY(VisibleDefaultsOnly, Category = Mesh)
-		class USceneComponent* MuzzleLocation;
+		class USceneComponent* MuzzleLocation ;
 	
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly Category = Camera)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 		class UCameraComponent* FirstPersonCamera;
 
-	UPROPERTY(VisibleAnywhere, BluepringReadOnly, Category = Camera)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 		float TurnRate;
 
-	UPROPERTY(VisibleAnywhere, BluepringReadOnly, Category = Camera)
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera)
 		float LookUpRate;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = Gameplay)
